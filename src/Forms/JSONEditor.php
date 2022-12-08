@@ -8,8 +8,11 @@ use Filament\Forms\Components\Field;
 class JSONEditor extends Field
 {
     public string $view = 'filament-jsoneditor::json-editor';
+
     protected int|Closure|null $height = 300;
+
     protected array|Closure|null $modes = ['code', 'form', 'text', 'tree', 'view', 'preview'];
+
     protected bool $jsonFormatted = false;
 
     public function modes(array|Closure|null $modes): static
@@ -45,7 +48,6 @@ class JSONEditor extends Field
     {
         return json_encode($this->evaluate($this->modes));
     }
-
 
     public function getJsonFormatted(): bool
     {

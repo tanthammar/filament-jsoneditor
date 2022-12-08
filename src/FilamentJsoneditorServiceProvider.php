@@ -13,14 +13,14 @@ class FilamentJsoneditorServiceProvider extends PluginServiceProvider
      * @var string[]
      */
     protected array $scripts = [
-        'invaders-filament-jsoneditor' => __DIR__ . '/../dist/jsoneditor/jsoneditor.min.js',
+        'invaders-filament-jsoneditor' => __DIR__.'/../dist/jsoneditor/jsoneditor.min.js',
     ];
 
     /**
      * @var string[]
      */
     protected array $styles = [
-        'invaders-filament-jsoneditor' => __DIR__ . '/../dist/jsoneditor/jsoneditor.min.css',
+        'invaders-filament-jsoneditor' => __DIR__.'/../dist/jsoneditor/jsoneditor.min.css',
     ];
 
     public function boot()
@@ -36,13 +36,13 @@ class FilamentJsoneditorServiceProvider extends PluginServiceProvider
         }
 
         $this->publishes([
-            __DIR__ . '/../dist/jsoneditor/img/jsoneditor-icons.svg' => public_path('filament/assets/img/jsoneditor-icons.svg'),
+            __DIR__.'/../dist/jsoneditor/img/jsoneditor-icons.svg' => public_path('filament/assets/img/jsoneditor-icons.svg'),
         ], 'filament-jsoneditor-img');
     }
 
     protected function bootLoaders()
     {
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'filament-jsoneditor');
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'filament-jsoneditor');
     }
 
     public function configurePackage(Package $package): void
