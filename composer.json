@@ -17,10 +17,10 @@
         }
     ],
     "require": {
-        "php": "^8.0",
-        "filament/filament": "^2.0",
+        "php": "^8.0|^8.1|^8.2",
+        "filament/filament": "^2.0 | 2.x-dev",
         "spatie/laravel-package-tools": "^1.9.2",
-        "illuminate/contracts": "^8.74|^9.0"
+        "illuminate/contracts": "^8.74|^9.0|^10.0"
     },
     "require-dev": {
         "nunomaduro/collision": "^6.0",

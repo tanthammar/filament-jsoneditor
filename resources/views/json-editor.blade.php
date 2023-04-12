@@ -56,7 +56,7 @@
         @else
             <div
                 x-html="state"
-                class="max-w-none p-3 prose border border-gray-300 rounded shadow-sm"
+                class="max-w-none p-3 prose dark:prose-invert border border-gray-300 rounded shadow-sm"
             ></div>
         @endunless
     </div>
