@@ -5,7 +5,6 @@
     :helper-text="$getHelperText()"
     :hint="$getHint()"
     :hint-icon="$getHintIcon()"
-    :hint-action="$getHintAction()"
     :required="$isRequired()"
     :state-path="$getStatePath()"
 >
@@ -50,8 +49,7 @@
      })"
          x-cloak
          wire:ignore>
-            <div x-ref="editor" class="w-full ace_editor"
-                 style="min-height: 30vh;height:{{ $getHeight() }}px"></div>
+        <div x-ref="editor" class="w-full ace_editor"
+             style="min-height: 30vh;height:{{ $getHeight() }}px"></div>
     </div>
 </x-forms::field-wrapper>
-
