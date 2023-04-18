@@ -2,6 +2,7 @@
 
 namespace InvadersXX\FilamentJsoneditor;
 
+use Filament\Support\Assets\AlpineComponent;
 use Filament\Support\Assets\AssetManager;
 use Filament\Support\Assets\Css;
 use Filament\Support\Assets\Js;
@@ -15,7 +16,7 @@ class FilamentJsoneditorServiceProvider extends PackageServiceProvider
     {
         $package
             ->name('filament-jsoneditor')
-            ->hasConfigFile()
+            ->hasAssets()
             ->hasViews();
     }
 
@@ -23,20 +24,28 @@ class FilamentJsoneditorServiceProvider extends PackageServiceProvider
     {
         $this->app->resolving(AssetManager::class, function () {
             \Filament\Support\Facades\FilamentAsset::register([
-                Css::make('invaders-filament-jsoneditor-css', __DIR__.'/../dist/jsoneditor/jsoneditor.min.css'),
-                Js::make('invaders-filament-jsoneditor-js', __DIR__.'/../dist/jsoneditor/jsoneditor.min.js')
-            ], 'InvadersXX/filament-jsoneditor');
+                AlpineComponent::make('filament-jsoneditor', __DIR__.'/../resources/dist/js/filament-jsoneditor.js'),
+            ], 'invadersxx/filament-jsoneditor');
 
         });
+
+
     }
 
-    public function packageBooted(): void
+/*    public function packageBooted(): void
     {
+        //OBS importerar css i js som har svg, dessa konverteras automatiskt med npx --loader (se nedan) så de behöver ej exporteras längre
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__.'/../dist/jsoneditor/img/jsoneditor-icons.svg' => public_path('filament/assets/img/jsoneditor-icons.svg'),
-            ], 'invaders-filament-jsoneditor-img');
+                __DIR__.'/../resources/js/img/jsoneditor-icons.svg' => public_path('filament/assets/img/jsoneditor-icons.svg'),
+            ], 'filament-jsoneditor-assets');
         }
-    }
+    }*/
+
+    /** commands
+     * first compile the js and css, then publish the assets with Spatie's package tools
+     * npx esbuild resources/js/filament-jsoneditor.js --outfile=resources/dist/js/filament-jsoneditor.js --loader:.svg=dataurl --bundle --minify --platform=neutral
+     * php artisan vendor:publish --tag=filament-jsoneditor-assets --force
+     */
 
 }
