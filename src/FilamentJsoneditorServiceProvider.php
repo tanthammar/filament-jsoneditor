@@ -16,19 +16,20 @@ class FilamentJsoneditorServiceProvider extends PackageServiceProvider
     {
         $package
             ->name('filament-jsoneditor')
-            ->hasAssets()
+            //->hasAssets()
             ->hasViews();
     }
 
     public function packageRegistered(): void
     {
-        $this->app->resolving(AssetManager::class, function () {
-            \Filament\Support\Facades\FilamentAsset::register([
-                AlpineComponent::make('filament-jsoneditor', __DIR__.'/../resources/dist/js/filament-jsoneditor.js'),
-            ], 'invadersxx/filament-jsoneditor');
-
-        });
-
+        if($this->app->runningInConsole()) {
+            $this->app->resolving(AssetManager::class, function () {
+                \Filament\Support\Facades\FilamentAsset::register([
+                    Css::make('filament-jsoneditor', __DIR__.'/../resources/dist/js/filament-jsoneditor.css'),
+                    Js::make('filament-jsoneditor', __DIR__.'/../resources/dist/js/filament-jsoneditor.js'),
+                ], 'invadersxx/filament-jsoneditor');
+            });
+        }
 
     }
 
@@ -43,9 +44,9 @@ class FilamentJsoneditorServiceProvider extends PackageServiceProvider
     }*/
 
     /** commands
-     * first compile the js and css, then publish the assets with Spatie's package tools
+     * first compile the js and css, then publish the assets with Filament upgrade command
      * npx esbuild resources/js/filament-jsoneditor.js --outfile=resources/dist/js/filament-jsoneditor.js --loader:.svg=dataurl --bundle --minify --platform=neutral
-     * php artisan vendor:publish --tag=filament-jsoneditor-assets --force
+     * php artisan filament:upgrade
      */
 
 }

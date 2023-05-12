@@ -1,8 +1,7 @@
 import JSONEditor from './jsoneditor.min.js';
 import './jsoneditor.min.css';
 
-export default FilamentJsoneditor(config)
-{
+export default function FilamentJsoneditor(config) {
     return {
         state: config.state,
         isJson: config.isJson,

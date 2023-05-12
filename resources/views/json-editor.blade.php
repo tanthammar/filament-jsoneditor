@@ -9,12 +9,12 @@
     :state-path="$getStatePath()"
 >
     <div class="w-full"
-         x-load-css="['{{ asset('vendor/filament-jsoneditor/js/filament-jsoneditor.css') }}']"
+         x-load-css="['{{ asset('css/InvadersXX/filament-jsoneditor/filament-jsoneditor.css') }}']"
          x-ignore
          x-cloak
          wire:ignore
          ax-load="visible"
-         ax-load-src="@FilamentAlpineComponent('filament-jsoneditor', 'invadersxx/filament-jsoneditor')"
+         ax-load-src="{{ asset('js/InvadersXX/filament-jsoneditor/filament-jsoneditor.js') }}"
          x-data="{
             state: $wire.entangle('{{ $getStatePath() }}'),
             isJson: {{ json_encode($getJsonFormatted()) }},
