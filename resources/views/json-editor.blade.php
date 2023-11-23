@@ -9,7 +9,7 @@
     :state-path="$getStatePath()"
 >
     <div class="w-full" x-data="{
-            state: $wire.entangle('{{ $getStatePath() }}'),
+            state: $wire.$entangle('{{ $getStatePath() }}', true),
         }"
          x-init="$nextTick(() => {
             const options = {
