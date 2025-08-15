@@ -15,6 +15,6 @@
   "devDependencies": {
       "laravel-mix": "^6.0.6",
       "postcss": "^8.1.14",
-      "jsoneditor": "^9.7.4"
+      "jsoneditor": "^10.3.0"
   }
 }
